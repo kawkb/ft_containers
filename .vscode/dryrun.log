@@ -1,5 +1,6 @@
-make: Entering directory `/Users/kdrissi-/Desktop/containers'
-make: Leaving directory `/Users/kdrissi-/Desktop/containers'
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/kdrissi-/containers'
+make: Leaving directory '/home/kdrissi-/containers'
  
 make: *** No targets.  Stop.
 

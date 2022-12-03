@@ -3,11 +3,16 @@
 namespace ft {
     template <class T, class Allocator = std::allocator<T> >
     class vector {
+    private:
+        int m_size;
+        int m_capacity;
+        int *m_array;
+
     public:
         // types:
         typedef typename Allocator::reference reference;
         typedef typename Allocator::const_reference const_reference;
-        typedef implementation defined iterator; // See 23.1
+        typedef typename raiIterator defined iterator; // See 23.1
         typedef implementation defined const_iterator; // See 23.1
         typedef implementation defined size_type; // See 23.1
         typedef implementation defined difference_type;// See 23.1
@@ -19,7 +24,7 @@ namespace ft {
         typedef std::reverse_iterator<const_iterator> const_reverse_iterator;
 
         // 23.2.4.1 construct/copy/destroy:
-        explicit vector(const Allocator& = Allocator());
+        explicit vector(const Allocator& = Allocator()):m_size=0 ;
         explicit vector(size_type n, const T& value = T(),
         const Allocator& = Allocator());
         template <class InputIterator>
@@ -44,7 +49,7 @@ namespace ft {
         const_reverse_iterator rend() const;
 
         // 23.2.4.2 capacity:
-        size_type size() const;
+        size_type size() const{return };
         size_type max_size() const;
         void resize(size_type sz, T c = T());
         size_type capacity() const;

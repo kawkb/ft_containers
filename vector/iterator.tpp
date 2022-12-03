@@ -4,7 +4,7 @@
 namespace ft 
 {
   template<class Iterator>
-  struct iterator_traits
+  struct iterator_t 
   {
     typedef typename Iterator::difference_type difference_type;
     typedef typename Iterator::value_type value_type;
@@ -18,5 +18,7 @@ namespace ft
   struct output_iterator_tag {};
   struct forward_iterator_tag: public input_iterator_tag {};
   struct bidirectional_iterator_tag: public forward_iterator_tag {};
+  
   struct random_access_iterator_tag: public bidirectional_iterator_tag {};
 }
+T* ptr;
