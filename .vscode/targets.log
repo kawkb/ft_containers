@@ -22,15 +22,17 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # automatic
 @F = $(notdir $@)
 # makefile
-CURDIR := /Users/kdrissi-/Desktop/containers
+CURDIR := /home/kdrissi-/containers
 # makefile
 SHELL = /bin/sh
 # environment
-VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
+VSCODE_NLS_CONFIG = {"locale":"en","availableLanguages":{}}
 # environment
-_ = /usr/bin/make
-# makefile (from `Makefile', line 1)
+_ = /home/kdrissi-/.vscode-server/bin/6261075646f055b99068d3688932416f2346dd3b/node
+# makefile (from 'Makefile', line 1)
 MAKEFILE_LIST :=  Makefile
+# 'override' directive
+GNUMAKEFLAGS := 
 # environment
 VSCODE_CWD = /
 # environment
@@ -41,8 +43,10 @@ PATH = /Users/kdrissi-/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/u
 LSCOLORS = Gxfxcxdxbxegedabagacad
 # environment
 ELECTRON_RUN_AS_NODE = 1
+# environment
+VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-e77ac7df-744f-413f-adaf-fca501925c8d.sock
 # default
-.FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
 SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.L1NjsBT6Eb/Listeners
 # automatic
@@ -50,15 +54,17 @@ SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.L1NjsBT6Eb/Listeners
 # environment
 HOMEBREW_TEMP = /tmp/kdrissi-/Homebrew/Temp
 # environment
-PWD = /Users/kdrissi-/Desktop/containers
+WSL2_GUI_APPS_ENABLED = 1
 # environment
-ORIGINAL_XDG_CURRENT_DESKTOP = undefined
-# environment
-VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
-# environment
-HOME = /Users/kdrissi-
+PWD = /home/kdrissi-/containers
 # default
-MAKEFILEPATH := /Applications/Xcode.app/Contents/Developer/Makefiles
+.LOADED := 
+# environment
+WSL_INTEROP = /run/WSL/11_interop
+# environment
+PULSE_SERVER = /mnt/wslg/PulseServer
+# environment
+MANPATH = /home/linuxbrew/.linuxbrew/share/man::
 # environment
 VSCODE_CODE_CACHE_PATH = /Users/kdrissi-/Library/Application Support/Code/CachedData/e8a3071ea4344d9d48ef8a4df2c097372b0c5161
 # environment
@@ -66,7 +72,7 @@ LOGNAME = kdrissi-
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
-ZSH = /Users/kdrissi-/.oh-my-zsh
+ZSH = /home/kdrissi-/.oh-my-zsh
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
@@ -82,7 +88,7 @@ HOMEBREW_CACHE = /tmp/kdrissi-/Homebrew/Caches
 # environment
 SHLVL = 1
 # default
-MAKE_VERSION := 3.81
+MAKE_VERSION := 4.2.1
 # environment
 USER = kdrissi-
 # makefile
@@ -91,12 +97,12 @@ USER = kdrissi-
 LESS = -R
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
+# environment
+VSCODE_WSL_EXT_LOCATION = /mnt/c/Users/driss/.vscode/extensions/ms-vscode-remote.remote-wsl-0.72.0
 # default
 MAKE_COMMAND := /Applications/Xcode.app/Contents/Developer/usr/bin/make
 # default
 .VARIABLES := 
-# environment
-TMPDIR = /var/folders/zz/zyxvpxvq6csfxvn_n00007dw0001vg/T/
 # automatic
 *F = $(notdir $*)
 # environment
@@ -104,9 +110,9 @@ VSCODE_IPC_HOOK = /Users/kdrissi-/Library/Application Support/Code/1.74.2-main.s
 # environment
 MallocNanoZone = 0
 # makefile
-MAKEFLAGS = Rrqp
+MAKEFLAGS = pqrR
 # environment
-MFLAGS = -Rrqp
+MFLAGS = -pqrR
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
@@ -129,10 +135,12 @@ LC_ALL = C
 ^F = $(notdir $^)
 # default
 SUFFIXES := 
-# default
-.INCLUDE_DIRS = /usr/local/include
 # environment
-MAKELEVEL := 0
+WAYLAND_DISPLAY = wayland-0
+# default
+.INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
+# default
+.RECIPEPREFIX := 
 # environment
 LANG = C
 # environment
@@ -158,27 +166,17 @@ VSCODE_PID = 23358
 
 # Not a target:
 all:
-#  Command-line target.
+#  Command line target.
 #  Implicit rule search has been done.
 #  File does not exist.
-#  File has not been updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
-
-# Not a target:
-.SUFFIXES:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-14 21:47:22
+#  Last modified 2022-06-15 01:20:38.760792779
 #  File has been updated.
 #  Successfully updated.
-# variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 .DEFAULT:
@@ -187,17 +185,15 @@ Makefile:
 #  File has not been updated.
 
 # files hash-table stats:
-# Load=4/1024=0%, Rehash=0, Collisions=0/16=0%
+# Load=4/1024=0%, Rehash=0, Collisions=0/14=0%
 # VPATH Search Paths
 
-# No `vpath' search paths.
+# No 'vpath' search paths.
 
-# No general (`VPATH' variable) search path.
+# No general ('VPATH' variable) search path.
 
-# # of strings in strcache: 1
-# # of strcache buffers: 1
-# strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
-# strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
+# strcache buffers: 1 (0) / strings = 12 / storage = 95 B / avg = 7 B
+# current buf: size = 8162 B / used = 95 B / count = 12 / avg = 7 B
 
 # Finished Make data base on Wed Feb 15 21:24:37 2023
 
