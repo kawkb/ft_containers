@@ -4,10 +4,11 @@
 
 int main(void)
 {
-    std::vector<std::string> vec;
-    std::cout << vec.max_size() << std::endl;
-    ft::vector<int> vec1(10, 10);
-    printf("%d\n", vec1[1]);
-
-
+    ft::vector<int> vec1(130, 100);
+    ft::vector<int> vec;
+    vec = vec1;
+    size_t i = vec.max_size();
+    printf("%lu\n", i);
+    std::vector<int> v;
+    std::cout << v.max_size() << std::endl;
 }

@@ -6,8 +6,11 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # PARTICULAR PURPOSE.
 
 # This program built for i386-apple-darwin11.3.0
+ 
+make: *** No rule to make target `all'.  Stop.
 
-# Make data base, printed on Wed Feb 15 21:24:37 2023
+
+# Make data base, printed on Thu Feb 16 00:46:20 2023
 
 # Variables
 
@@ -22,49 +25,43 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # automatic
 @F = $(notdir $@)
 # makefile
-CURDIR := /home/kdrissi-/containers
+CURDIR := /Users/kdrissi-/Desktop/containers
 # makefile
 SHELL = /bin/sh
 # environment
-VSCODE_NLS_CONFIG = {"locale":"en","availableLanguages":{}}
+VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
-_ = /home/kdrissi-/.vscode-server/bin/6261075646f055b99068d3688932416f2346dd3b/node
-# makefile (from 'Makefile', line 1)
+_ = /usr/bin/make
+# makefile (from `Makefile', line 1)
 MAKEFILE_LIST :=  Makefile
-# 'override' directive
-GNUMAKEFLAGS := 
 # environment
 VSCODE_CWD = /
 # environment
-Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.4HUx2M5rmB/Render
+Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.9Wlk2LzO3u/Render
 # environment
-PATH = /Users/kdrissi-/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki
+PATH = /Users/kdrissi-/.brew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/munki:/Library/Frameworks/Mono.framework/Versions/Current/Commands
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
 # environment
 ELECTRON_RUN_AS_NODE = 1
-# environment
-VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-e77ac7df-744f-413f-adaf-fca501925c8d.sock
 # default
-.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
+.FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.L1NjsBT6Eb/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.ANBmUJWoKd/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
 HOMEBREW_TEMP = /tmp/kdrissi-/Homebrew/Temp
 # environment
-WSL2_GUI_APPS_ENABLED = 1
+PWD = /Users/kdrissi-/Desktop/containers
 # environment
-PWD = /home/kdrissi-/containers
+ORIGINAL_XDG_CURRENT_DESKTOP = undefined
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+# environment
+HOME = /Users/kdrissi-
 # default
-.LOADED := 
-# environment
-WSL_INTEROP = /run/WSL/11_interop
-# environment
-PULSE_SERVER = /mnt/wslg/PulseServer
-# environment
-MANPATH = /home/linuxbrew/.linuxbrew/share/man::
+MAKEFILEPATH := /Applications/Xcode.app/Contents/Developer/Makefiles
 # environment
 VSCODE_CODE_CACHE_PATH = /Users/kdrissi-/Library/Application Support/Code/CachedData/e8a3071ea4344d9d48ef8a4df2c097372b0c5161
 # environment
@@ -72,7 +69,7 @@ LOGNAME = kdrissi-
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
 # environment
-ZSH = /home/kdrissi-/.oh-my-zsh
+ZSH = /Users/kdrissi-/.oh-my-zsh
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
@@ -88,7 +85,7 @@ HOMEBREW_CACHE = /tmp/kdrissi-/Homebrew/Caches
 # environment
 SHLVL = 1
 # default
-MAKE_VERSION := 4.2.1
+MAKE_VERSION := 3.81
 # environment
 USER = kdrissi-
 # makefile
@@ -97,12 +94,12 @@ USER = kdrissi-
 LESS = -R
 # automatic
 %D = $(patsubst %/,%,$(dir $%))
-# environment
-VSCODE_WSL_EXT_LOCATION = /mnt/c/Users/driss/.vscode/extensions/ms-vscode-remote.remote-wsl-0.72.0
 # default
 MAKE_COMMAND := /Applications/Xcode.app/Contents/Developer/usr/bin/make
 # default
 .VARIABLES := 
+# environment
+TMPDIR = /var/folders/zz/zyxvpxvq6csfxvn_n00007dw0001vg/T/
 # automatic
 *F = $(notdir $*)
 # environment
@@ -110,13 +107,13 @@ VSCODE_IPC_HOOK = /Users/kdrissi-/Library/Application Support/Code/1.74.2-main.s
 # environment
 MallocNanoZone = 0
 # makefile
-MAKEFLAGS = pqrR
+MAKEFLAGS = Rrqp
 # environment
-MFLAGS = -pqrR
+MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-XPC_SERVICE_NAME = com.microsoft.VSCode.1324
+XPC_SERVICE_NAME = com.microsoft.VSCode.3412
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
@@ -135,16 +132,14 @@ LC_ALL = C
 ^F = $(notdir $^)
 # default
 SUFFIXES := 
+# default
+.INCLUDE_DIRS = /usr/local/include
 # environment
-WAYLAND_DISPLAY = wayland-0
-# default
-.INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
-# default
-.RECIPEPREFIX := 
+MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 23358
+VSCODE_PID = 30018
 # variable set hash-table stats:
 # Load=63/1024=6%, Rehash=0, Collisions=1/86=1%
 
@@ -166,17 +161,27 @@ VSCODE_PID = 23358
 
 # Not a target:
 all:
-#  Command line target.
+#  Command-line target.
 #  Implicit rule search has been done.
 #  File does not exist.
+#  File has not been updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+.SUFFIXES:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-15 01:20:38.760792779
+#  Last modified 2022-06-14 21:47:22
 #  File has been updated.
 #  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
 
 # Not a target:
 .DEFAULT:
@@ -185,18 +190,18 @@ Makefile:
 #  File has not been updated.
 
 # files hash-table stats:
-# Load=4/1024=0%, Rehash=0, Collisions=0/14=0%
+# Load=4/1024=0%, Rehash=0, Collisions=0/16=0%
 # VPATH Search Paths
 
-# No 'vpath' search paths.
+# No `vpath' search paths.
 
-# No general ('VPATH' variable) search path.
+# No general (`VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 12 / storage = 95 B / avg = 7 B
-# current buf: size = 8162 B / used = 95 B / count = 12 / avg = 7 B
+# # of strings in strcache: 1
+# # of strcache buffers: 1
+# strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
+# strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Wed Feb 15 21:24:37 2023
+# Finished Make data base on Thu Feb 16 00:46:20 2023
 
  
-make: *** No rule to make target `all'.  Stop.
-
