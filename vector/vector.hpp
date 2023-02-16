@@ -4,15 +4,7 @@
 namespace ft {
 	template <class T, class Allocator = std::allocator<T> >
 	class vector {
-	private:
-		T						*m_array;
-		size_type				m_capacity;
-		size_type				m_size;
-		Allocator				m_alloc;
-		
-
-	public:
-		// types:
+		typedef size_t												size_type; // See 23.1
 		typedef T 													value_type;
 		typedef Allocator											allocator_type;
 		typedef typename Allocator::reference						reference;
@@ -25,7 +17,16 @@ namespace ft {
 		// typedef ft::reverse_iterator<iterator> 					reverse_iterator;
 		// typedef ft::reverse_iterator<const_iterator> 			const_reverse_iterator;
 		// typedef implementation defined 							difference_type;// See 23.1
-		typedef size_t												size_type; // See 23.1
+
+	private:
+		value_type				*m_array;
+		size_type				m_capacity;
+		size_type				m_size;
+		Allocator				m_alloc;
+		
+
+	public:
+		// types:
 
 
 	//default constructor:
@@ -35,7 +36,7 @@ namespace ft {
 		{
 			m_array = m_alloc.allocate(n);
 			for (int i = 0; i < n ; i++)
-				m_alloc.construct(m_array + i, value);
+				m_alloc.construct(m_array + i, val);
 		}
 	//range constructor:
 		// template <class InputIterator>         
@@ -55,7 +56,7 @@ namespace ft {
 			m_alloc.deallocate(m_array, m_capacity);
 		}
 	// assignment operator overload:
-		vector& operator= (const vector& x);
+		vector& operator= (const vector& x)
 		{
 			if (this != &x)
 			{
@@ -93,7 +94,7 @@ namespace ft {
 	// 	reverse_iterator		rend();
 	// 	const_reverse_iterator	rend() const;
 
-	// 	// capacity:
+	// Capacity:
 		size_type				size() const { return(m_size); }
 		size_type				max_size() const { return(m_alloc.max_size()); }
 		void 					resize (size_type n, value_type val = value_type())
@@ -103,18 +104,36 @@ namespace ft {
 				for(size_type i = n; i < m_size; i++)
 					m_alloc.destroy(m_array + i);
 			}
-
+			else
+			{
+				if (n > m_capacity)
+				{
+					pointer		new_array = m_alloc.allocate(n);
+					for(size_type i = 0; i < m_size; i++)
+					{
+						m_alloc.construct(new_array + i, *(m_array + i));
+						m_alloc.destroy(m_array + i);
+					}
+					m_alloc.deallocate(m_array, m_capacity);
+					m_array = new_array;
+					m_capacity = n;
+				}
+				for(size_type i = m_size; i < n; i++)
+					m_alloc.construct(m_array + i, val);
+			}
+			m_size = n;
 		}
-
 		size_type				capacity() const { return(m_capacity);}
-
-	// 	bool					empty() const
-	// 	{
-
-	// 	}
-
-	// 	void					reserve(size_type n);
-
+		bool					empty() const { return(m_size == 0);}
+		void					reserve(size_type n)
+		{
+			if (m_capacity < n)
+			{
+				m_alloc.allocate(n - m_capacity, m_array + m_capacity);
+				m_capacity = n;
+			}
+		}
+		void 					shrink_to_fit();
 	// 	// element access:
 	// 	reference				operator[](size_type n)
 	// 	{
