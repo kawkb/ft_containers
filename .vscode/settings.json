@@ -14,6 +14,8 @@
         "stdexcept": "cpp",
         "bitset": "cpp",
         "locale": "cpp",
-        "string_view": "cpp"
+        "string_view": "cpp",
+        "__bit_reference": "cpp",
+        "initializer_list": "cpp"
     }
 }
