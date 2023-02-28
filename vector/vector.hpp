@@ -4,13 +4,13 @@
 namespace ft {
 	template <class T, class Allocator = std::allocator<T> >
 	class vector {
-		typedef size_t												size_type;
-		typedef T 													value_type;
-		typedef Allocator											allocator_type;
-		typedef typename Allocator::reference						reference;
-		typedef typename Allocator::const_reference 				const_reference;
-		typedef typename Allocator::pointer 						pointer;
-		typedef typename Allocator::const_pointer 					const_pointer;
+		typedef size_t											size_type;
+		typedef T 												value_type;
+		typedef Allocator										allocator_type;
+		typedef typename Allocator::reference					reference;
+		typedef typename Allocator::const_reference 			const_reference;
+		typedef typename Allocator::pointer 					pointer;
+		typedef typename Allocator::const_pointer 				const_pointer;
 
 		typedef	ft::random_access_iterator<value_type>  		iterator;
 		typedef	ft::random_access_iterator<const value_type> 	const_iterator;
@@ -24,7 +24,6 @@ namespace ft {
 		size_type				m_size;
 		Allocator				m_alloc;
 		
-
 	public:
 
 	//default constructor:
@@ -37,8 +36,22 @@ namespace ft {
 				m_alloc.construct(m_array + i, val);
 		}
 	//range constructor:
-		// template <class InputIterator>         
-		// vector (InputIterator first, InputIterator last, const allocator_type& alloc = allocator_type()){}
+		template <class InputIterator>
+		vector<InputIterator>::vector(InputIterator first, InputIterator last, const allocator_type& alloc)
+    	: m_allocator(alloc)
+    	{
+    		m_size = 0;
+    		m_capacity = 0;
+    		for (InputIterator it = first; it != last; ++it) 
+    	    	++m_capacity;
+    		m_array = m_allocator.allocate(m_capacity);
+    	    while (first != last)
+    	    {
+    	        m_allocator.construct(m_array + m_size, *first);
+    	        m_size++;
+    	        ++first;
+    	    }
+    	}
 	//copy constructor:
 		vector (const vector& x) : m_size(x.m_size), m_capacity(x.m_capacity)
 		{
@@ -82,10 +95,10 @@ namespace ft {
 		}
 
 	// iterators:
-		iterator				begin() { return (m_array);}
-		const_iterator			begin() const { return (m_array);}
-		iterator				end() {return( m_array + m_size);}
-		const_iterator			end() const {return( m_array + m_size);}
+		iterator				begin() { return (iterator(m_array));}
+		const_iterator			begin() const { return (const_iterator(m_array));}
+		iterator				end() {return (iterator(m_array + m_size));}
+		const_iterator			end() const {return (const_iterator(m_array + m_size));}
 		reverse_iterator		rbegin() {return (reverse_iterator(m_array + m_size));}
 		const_reverse_iterator	rbegin() const {return const_reverse_iterator(m_array + m_size);}
 		reverse_iterator		rend() {return (reverse_iterator(m_array));}
@@ -174,10 +187,12 @@ namespace ft {
 		const_reference			back() const { return (*m_array + m_size - 1);}
 
 	//modifiers:
+		template <class InputIterator>
 		void 					assign(InputIterator first, InputIterator last)
 		{
 			
 		}
+
 		void 					assign(size_type n, const value_type& val)
 		{
 			if (n > m_capacity)

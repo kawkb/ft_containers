@@ -16,6 +16,8 @@
         "locale": "cpp",
         "string_view": "cpp",
         "__bit_reference": "cpp",
-        "initializer_list": "cpp"
+        "initializer_list": "cpp",
+        "__debug": "cpp",
+        "algorithm": "cpp"
     }
 }
