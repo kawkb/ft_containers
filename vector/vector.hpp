@@ -1,12 +1,14 @@
 #pragma once
 #include <iostream>
 #include <vector>
-namespace ft {
+namespace ft
+{
 	template <class T, class Allocator = std::allocator<T> >
-	class vector {
+	class vector 
+	{
 		typedef size_t											size_type;
-		typedef T 												value_type;
-		typedef Allocator										allocator_type;
+		typedef typename T 										value_type;
+		typedef typename Allocator								allocator_type;
 		typedef typename Allocator::reference					reference;
 		typedef typename Allocator::const_reference 			const_reference;
 		typedef typename Allocator::pointer 					pointer;
