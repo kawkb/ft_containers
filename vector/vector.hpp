@@ -27,12 +27,12 @@ namespace ft
 		typedef ptrdiff_t 													difference_type;
 
 	//default constructor:
-		explicit vector (const allocator_type& alloc = allocator_type()) : m_size(0), m_capacity(0), m_array(nullptr), m_alloc(alloc) {}
+		explicit vector (const allocator_type& alloc = allocator_type()) : m_array(nullptr),m_capacity(0), m_size(0), m_alloc(alloc) {}
 	//fill constructor:
-		explicit vector (size_type n, const value_type& val = value_type(), const allocator_type& alloc = allocator_type()) : m_size(n), m_capacity(n), m_alloc(alloc)
+		explicit vector (size_type n, const value_type& val = value_type(), const allocator_type& alloc = allocator_type()) : m_capacity(n), m_size(n),m_alloc(alloc)
 		{
 			m_array = m_alloc.allocate(n);
-			for (int i = 0; i < n ; i++)
+			for (size_type i = 0; i < n ; i++)
 				m_alloc.construct(m_array + i, val);
 		}
 	//range constructor:
@@ -56,7 +56,7 @@ namespace ft
 		vector (const vector& x) : m_size(x.m_size), m_capacity(x.m_capacity)
 		{
 			m_array = m_alloc.allocate(m_capacity);
-			for(int i = 0; i < x.m_size; i++)
+			for(size_type i = 0; i < x.m_size; i++)
 				m_alloc.construct(m_array + i, *(x.m_array + i));
 		}
 	// destructor:
@@ -64,7 +64,8 @@ namespace ft
 		{
 			for(size_t i = 0; i < m_size; i++)
 				m_alloc.destroy(m_array + i);
-			m_alloc.deallocate(m_array, m_capacity);
+			if (m_array)
+				m_alloc.deallocate(m_array, m_capacity);
 		}
 	// assignment operator overload:
 		vector& operator= (const vector& x)
@@ -75,9 +76,10 @@ namespace ft
 				{
 					for (size_t i = 0; i < m_size; i++)
 						m_alloc.destroy(m_array + i);
-					m_alloc.deallocate(m_array, m_capacity);
+					if (m_array)
+						m_alloc.deallocate(m_array, m_capacity);
 					m_array = m_alloc.allocate(x.m_size);
-					for(int i = 0; i < x.m_size; i++)
+					for(size_type i = 0; i < x.m_size; i++)
 						m_alloc.construct(m_array + i, *(x.m_array + i));
 					m_size = x.m_size;
 					m_capacity = x.m_size;
@@ -86,7 +88,7 @@ namespace ft
 				{
 					for (size_t i = 0; i < m_size; i++)
 						m_alloc.destroy(m_array + i);
-					for(int i = 0; i < x.m_size; i++)
+					for(size_type i = 0; i < x.m_size; i++)
 						m_alloc.construct(m_array + i, *(x.m_array + i));
 					m_size = x.m_size;
 				}
@@ -124,7 +126,8 @@ namespace ft
 						m_alloc.construct(new_array + i, *(m_array + i));
 						m_alloc.destroy(m_array + i);
 					}
-					m_alloc.deallocate(m_array, m_capacity);
+					if (m_array)
+						m_alloc.deallocate(m_array, m_capacity);
 					m_array = new_array;
 					m_capacity = n;
 				}
@@ -145,7 +148,8 @@ namespace ft
             	    m_alloc.construct(new_array + i, *(m_array + i));
             	    m_alloc.destroy(m_array + i);
             	}
-            	m_alloc.deallocate(m_array, m_size);
+				if (m_array)
+            		m_alloc.deallocate(m_array, m_size);
             	m_array = new_array;
 				m_capacity = n;
 			}
@@ -160,7 +164,8 @@ namespace ft
 					m_alloc.construct(new_array + i, *(m_array + i));
 					m_alloc.destroy(m_array + i);
 				}
-				m_alloc.deallocate(m_array, m_capacity);
+				if (m_array)
+					m_alloc.deallocate(m_array, m_capacity);
 				m_array = new_array;
 				m_capacity = m_size;
 			}
@@ -199,13 +204,14 @@ namespace ft
 			{
 				for(size_type i = 0; i < m_size; i++)
 					m_alloc.destroy(m_array + i);
-				m_alloc.deallocate(m_array, m_capacity);
-				this = vector(n, val);
+				if (m_array)
+					m_alloc.deallocate(m_array, m_capacity);
+				*this = vector(n, val);
 				m_capacity = n;
 			}
 			else
 			{
-				for (int i = 0; i < n ; i++)
+				for (size_type i = 0; i < n ; i++)
 				{
 					m_alloc.destroy(m_array + i);
 					m_alloc.construct(m_array + i, val);
