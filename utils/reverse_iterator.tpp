@@ -8,12 +8,12 @@ namespace ft
 	private:
 		Iterator m_iterator;
 	public:
-		typedef typename	Iterator                                                    iterator_type;
-		typedef typename	ft::iterator_traits<typename Iterator>::iterator_category   category;
-		typedef typename	ft::iterator_traits<typename Iterator>::value_type          value_type;
-		typedef typename	ft::iterator_traits<typename Iterator>::difference_type		difference_type;
-		typedef typename	ft::iterator_traits<typename Iterator>::pointer				pointer;
-		typedef typename	ft::iterator_traits<typename Iterator>::reference			reference;
+		typedef Iterator                                                    iterator_type;
+		typedef typename	ft::iterator_traits<Iterator>::iterator_category   category;
+		typedef typename	ft::iterator_traits<Iterator>::value_type          value_type;
+		typedef typename	ft::iterator_traits<Iterator>::difference_type		difference_type;
+		typedef typename	ft::iterator_traits<Iterator>::pointer				pointer;
+		typedef typename	ft::iterator_traits<Iterator>::reference			reference;
 	
 	// Default constructor
 		reverse_iterator(): m_iterator(){}
@@ -54,7 +54,7 @@ namespace ft
 		reverse_iterator operator++(int) 
 		{
         	reverse_iterator tmp = *this;
-        	--current;
+        	--m_iterator;
         	return tmp;
     	}
 
@@ -88,12 +88,6 @@ namespace ft
 		{
         	m_iterator += n;
         	return *this;
-    	}
-	// Derefrence iterator
-	    reference operator*() const
-		{
-        	Iterator tmp = m_iterator;
-        	return *--tmp;
     	}
 	// Derefrence iterator with offset []
 		reference operator[](difference_type n) const { return *(*this + n);}

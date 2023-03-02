@@ -18,6 +18,7 @@
         "__bit_reference": "cpp",
         "initializer_list": "cpp",
         "__debug": "cpp",
-        "algorithm": "cpp"
+        "algorithm": "cpp",
+        "*.tpp": "cpp"
     }
 }

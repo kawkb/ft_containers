@@ -18,9 +18,10 @@ namespace ft
 	
 		// Default constructor
 		random_access_iterator(pointer ptr = nullptr) : m_ptr(ptr) {}
+		// random_access_iterator(reference src) : m_ptr(&src) {}
 
 		// Copy constructor
-		random_access_iterator(const random_access_iterator& other) : m_ptr(other.m_ptr) {}
+		random_access_iterator(random_access_iterator const & other) : m_ptr(other.m_ptr) {}
 	
 		// Destructor
 		~random_access_iterator() {}
@@ -33,7 +34,10 @@ namespace ft
 			}
 			return (*this);
 		}
-	
+		random_access_iterator( value_type &src )
+        {
+            this->m_ptr = &src;
+        }
 		// Equality operator
 		bool operator==(const random_access_iterator& other) const 
 		{
@@ -91,7 +95,7 @@ namespace ft
 		// Addition operator
 		random_access_iterator operator+(difference_type n) const
 		{
-			return (random_access_iterator(m_ptr + n););
+			return (random_access_iterator(m_ptr + n));
 		}
 
 		// Subtraction operator
