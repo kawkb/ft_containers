@@ -4,7 +4,7 @@
 namespace ft 
 {
 	template<typename T>
-	class RandomAccessIterator
+	class random_access_iterator
 	{
 	private:
 		T* m_ptr;
@@ -17,16 +17,16 @@ namespace ft
 		typedef ptrdiff_t						difference_type;
 	
 		// Default constructor
-		RandomAccessIterator(pointer ptr = nullptr) : m_ptr(ptr) {}
+		random_access_iterator(pointer ptr = nullptr) : m_ptr(ptr) {}
 
 		// Copy constructor
-		RandomAccessIterator(const RandomAccessIterator& other) : m_ptr(other.m_ptr) {}
+		random_access_iterator(const random_access_iterator& other) : m_ptr(other.m_ptr) {}
 	
 		// Destructor
-		~RandomAccessIterator() {}
+		~random_access_iterator() {}
 	
 		// Assignment operator
-		RandomAccessIterator& operator=(const RandomAccessIterator& other)
+		random_access_iterator& operator=(const random_access_iterator& other)
 		{
 			if (this != &other) {
 				m_ptr = other.m_ptr;
@@ -35,13 +35,13 @@ namespace ft
 		}
 	
 		// Equality operator
-		bool operator==(const RandomAccessIterator& other) const 
+		bool operator==(const random_access_iterator& other) const 
 		{
 			return (m_ptr == other.m_ptr);
 		}
 
 		// Inequality operator
-		bool operator!=(const RandomAccessIterator& other) const 
+		bool operator!=(const random_access_iterator& other) const 
 		{
 			return (m_ptr != other.m_ptr);
 		}
@@ -59,84 +59,84 @@ namespace ft
 		}
 	
 		// Increment operator
-		RandomAccessIterator& operator++()
+		random_access_iterator& operator++()
 		{
 			++m_ptr;
 			return (*this);
 		}
 	
 		// Increment operator (post)
-		RandomAccessIterator operator++(int)
+		random_access_iterator operator++(int)
 		{
-			RandomAccessIterator temp(*this);
+			random_access_iterator temp(*this);
 			++m_ptr;
 			return (temp);
 		}
 	
 		// Decrement operator
-		RandomAccessIterator& operator--()
+		random_access_iterator& operator--()
 		{
 			--m_ptr;
 			return (*this);
 		}
 	
 		// Decrement operator (post)
-		RandomAccessIterator operator--(int)
+		random_access_iterator operator--(int)
 		{
-			RandomAccessIterator temp(*this);
+			random_access_iterator temp(*this);
 			--m_ptr;
 			return (temp);
 		}
 		
 		// Addition operator
-		RandomAccessIterator operator+(difference_type n) const
+		random_access_iterator operator+(difference_type n) const
 		{
-			return (RandomAccessIterator(m_ptr + n););
+			return (random_access_iterator(m_ptr + n););
 		}
 
 		// Subtraction operator
-		RandomAccessIterator operator-(difference_type n) const
+		random_access_iterator operator-(difference_type n) const
 		{
-			return (RandomAccessIterator(m_ptr - n));
+			return (random_access_iterator(m_ptr - n));
 		}
 	
 		// Difference operator
-		difference_type operator-(const RandomAccessIterator& other) const
+		difference_type operator-(const random_access_iterator& other) const
 		{
 			return m_ptr - other.m_ptr;
 		}
 
 		// Addition assignment operator
-		RandomAccessIterator& operator+=(difference_type n)
+		random_access_iterator& operator+=(difference_type n)
 		{
 			m_ptr += n;
 			return (*this);
 		}
 	
 		// Subtraction assignment operator
-		RandomAccessIterator& operator-=(difference_type n) {
+		random_access_iterator& operator-=(difference_type n) {
 			m_ptr -= n;
 			return *this;
 		}
 
 	
 		// Less than operator
-		bool operator<(const RandomAccessIterator& other) const {
+		bool operator<(const random_access_iterator& other) const {
 			return m_ptr < other.m_ptr;
 		}
 	
 		// Less than or equal to operator
-		bool operator<=(const RandomAccessIterator& other) const {
+		bool operator<=(const random_access_iterator& other) const {
 			return m_ptr <= other.m_ptr;
 		}
 	
 		// Greater than operator
-		bool operator>(const RandomAccessIterator& other) const {
+		bool operator>(const random_access_iterator& other) const {
 			return m_ptr > other.m_ptr;
 		}
 	
 		// Greater than or equal to operator
-		bool operator>=(const RandomAccessIterator& other) const {
+		bool operator>=(const random_access_iterator& other) const {
 			return m_ptr >= other.m_ptr;
 		}
 
