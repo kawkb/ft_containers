@@ -4,32 +4,30 @@
 #include "../utils/iterator.tpp"
 #include "../utils/random_access_iterator.tpp"
 #include "../utils/reverse_iterator.tpp"
+#include "../utils/enable_if.tpp"
 namespace ft
 {
 	template <class T, class Allocator = std::allocator<T> >
 	class vector 
 	{
-
-		
 	public:
-		typedef size_t														size_type;
 		typedef T 															value_type;
 		typedef Allocator													allocator_type;
-		typedef typename Allocator::reference								reference;
-		typedef typename Allocator::const_reference 						const_reference;
-		typedef typename Allocator::pointer 								pointer;
-		typedef typename Allocator::const_pointer 							const_pointer;
-
-		typedef	typename ft::random_access_iterator<value_type>  			iterator;
-		typedef	typename ft::random_access_iterator<const value_type> 		const_iterator;
-		typedef typename ft::reverse_iterator<iterator> 					reverse_iterator;
-		typedef typename ft::reverse_iterator<const_iterator> 				const_reverse_iterator;
+		typedef value_type&													reference;
+		typedef const value_type&					 						const_reference;
+		typedef value_type*					 								pointer;
+		typedef const value_type*				 							const_pointer;
+		typedef	ft::random_access_iterator<value_type>  					iterator;
+		typedef	ft::random_access_iterator<const value_type> 				const_iterator;
+		typedef ft::reverse_iterator<iterator> 								reverse_iterator;
+		typedef ft::reverse_iterator<const_iterator>		 				const_reverse_iterator;
 		typedef ptrdiff_t 													difference_type;
+		typedef size_t														size_type;
 
 	//default constructor:
 		explicit vector (const allocator_type& alloc = allocator_type()) : m_array(nullptr),m_capacity(0), m_size(0), m_alloc(alloc) {}
 	//fill constructor:
-		explicit vector (size_type n, const value_type& val = value_type(), const allocator_type& alloc = allocator_type()) : m_capacity(n), m_size(n),m_alloc(alloc)
+		explicit vector (size_type n, const value_type& val = value_type(), const allocator_type& alloc = allocator_type()) : m_capacity(n), m_size(n), m_alloc(alloc)
 		{
 			m_array = m_alloc.allocate(n);
 			for (size_type i = 0; i < n ; i++)
@@ -37,8 +35,7 @@ namespace ft
 		}
 	//range constructor:
 		template <class InputIterator>
-		vector(InputIterator first, InputIterator last, const allocator_type& alloc)
-    	: m_alloc(alloc)
+		vector(InputIterator first, InputIterator last, const allocator_type& alloc = allocator_type()) : m_alloc(alloc)
     	{
     		m_size = 0;
     		m_capacity = 0;
@@ -264,36 +261,68 @@ namespace ft
 				m_alloc.destroy(m_array + i);
 			m_size = 0;
 		}
-
 		allocator_type get_allocator() const {return(m_alloc);}
 	private:
 		value_type				*m_array;
 		size_type				m_capacity;
 		size_type				m_size;
 		Allocator				m_alloc;
-	// };
-	// template <class T, class Allocator>
-	// bool operator==(const vector<T,Allocator>& x,
-	// const vector<T,Allocator>& y);
-	// template <class T, class Allocator>
-	// bool operator< (const vector<T,Allocator>& x,
-	// const vector<T,Allocator>& y);
-	// template <class T, class Allocator>
-	// bool operator!=(const vector<T,Allocator>& x,
-	// const vector<T,Allocator>& y);
-	// template <class T, class Allocator>
-	// bool operator> (const vector<T,Allocator>& x,
-	// const vector<T,Allocator>& y);
-	// template <class T, class Allocator>
-	// bool operator>=(const vector<T,Allocator>& x,
-	// const vector<T,Allocator>& y);
-	// template <class T, class Allocator>
-	// bool operator<=(const vector<T,Allocator>& x,
-	// const vector<T,Allocator>& y);
-	// // specialized algorithms:
-	// template <class T, class Allocator>
-	// void swap(vector<T,Allocator>& x, vector<T,Allocator>& y);
-	// 	template <class InputIterator>
+	};
+	template <class T, class Allocator>
+	bool operator==(const vector<T, Allocator>& x, const vector<T, Allocator>& y)
+	{
+    	if (x.size() != y.size()) {
+    	    return false;
+    	}
+    	typename vector<T, Allocator>::const_iterator it_x = x.begin();
+    	typename vector<T, Allocator>::const_iterator it_y = y.begin();
+    	for (; it_x != x.end() && it_y != y.end(); ++it_x, ++it_y)
+		{
+    	    if (*it_x != *it_y)
+    	        return false;
+    	}
+    	return true;
+	}
 
-};
+	template <class T, class Allocator>
+	bool operator!=(const vector<T,Allocator>& x, const vector<T,Allocator>& y)
+	{
+		return !(x == y);
+	}
+
+	template <class T, class Allocator>
+	bool operator< (const vector<T,Allocator>& x, const vector<T,Allocator>& y)
+	{
+    	typename vector<T, Allocator>::const_iterator it_x = x.begin();
+    	typename vector<T, Allocator>::const_iterator it_y = y.begin();
+    	for (; it_x != x.end() && it_y != y.end(); ++it_x, ++it_y)
+		{
+    	    if (*it_x < *it_y)
+    	        return true;
+    	    else if (*it_y < *it_x)
+    	        return false;
+    	}
+    	return (it_x == x.end()) && (it_y != y.end());
+	}
+
+	template <class T, class Allocator>
+	bool operator<=(const vector<T,Allocator>& x, const vector<T,Allocator>& y)
+	{
+		return !(y < x);
+	}
+
+	template <class T, class Allocator>
+	bool operator> (const vector<T,Allocator>& x, const vector<T,Allocator>& y)
+	{
+		return (y < x);
+	}
+	template <class T, class Allocator>
+	bool operator>=(const vector<T,Allocator>& x, const vector<T,Allocator>& y)
+	{
+		return !(x < y);
+	}
+	// specialized algorithms:
+	template <class T, class Allocator>
+	void swap(vector<T,Allocator>& x, vector<T,Allocator>& y);
+
 }

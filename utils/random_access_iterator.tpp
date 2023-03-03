@@ -1,6 +1,7 @@
 #pragma once
 #include <cstddef>
 
+
 namespace ft 
 {
 	template<typename T>
@@ -13,16 +14,20 @@ namespace ft
 		typedef T								value_type;
 		typedef T*								pointer;
 		typedef T&								reference;
-		typedef ft::random_access_iterator_tag	iterator_category;
+		typedef std::random_access_iterator_tag	iterator_category;
 		typedef ptrdiff_t						difference_type;
 	
 		// Default constructor
 		random_access_iterator(pointer ptr = nullptr) : m_ptr(ptr) {}
 		// random_access_iterator(reference src) : m_ptr(&src) {}
-
+		random_access_iterator(const value_type src)
+        {
+            this->m_ptr = &src;
+        }
 		// Copy constructor
-		random_access_iterator(random_access_iterator const & other) : m_ptr(other.m_ptr) {}
-	
+		template<typename U>
+		random_access_iterator(const random_access_iterator<U> & other) { m_ptr = other.m_ptr;}
+
 		// Destructor
 		~random_access_iterator() {}
 	
@@ -34,10 +39,10 @@ namespace ft
 			}
 			return (*this);
 		}
-		random_access_iterator( value_type &src )
-        {
-            this->m_ptr = &src;
-        }
+		pointer		base() const
+		{
+			return (m_ptr);
+		}
 		// Equality operator
 		bool operator==(const random_access_iterator& other) const 
 		{
@@ -95,9 +100,9 @@ namespace ft
 		// Addition operator
 		random_access_iterator operator+(difference_type n) const
 		{
+			
 			return (random_access_iterator(m_ptr + n));
 		}
-
 		// Subtraction operator
 		random_access_iterator operator-(difference_type n) const
 		{
@@ -149,4 +154,11 @@ namespace ft
 		    return *(m_ptr + n);
 		}
 	};
+	    template< typename Type>
+    	random_access_iterator<Type>   operator+(size_t value, const random_access_iterator<Type> & src)
+    	{
+    	    random_access_iterator<Type>   ret(src);
+    	    ret += value;
+    	    return (ret);
+    	}
 }
